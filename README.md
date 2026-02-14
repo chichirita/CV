@@ -81,5 +81,40 @@ model = nn.Sequential(
   nn.Linear(128, 2)
 )
 
+```
+
+### Сверточная сеть для распознавания сторон кости (`dice_cnn.py`)
+
+```python
+model = keras.Sequential([
+  layers.Conv2D(32, (3, 3), activation='relu',
+  input_shape=(self.image_size, self.image_size, 3)),
+  layers.MaxPooling2D((2, 2)),
+  layers.BatchNormalization(),
+
+  layers.Conv2D(64, (3, 3), activation='relu'),
+  layers.MaxPooling2D((2, 2)),
+  layers.BatchNormalization(),
+
+  layers.Conv2D(128, (3, 3), activation='relu'),
+  layers.MaxPooling2D((2, 2)),
+  layers.BatchNormalization(),
+
+  layers.Conv2D(256, (3, 3), activation='relu'),
+  layers.MaxPooling2D((2, 2)),
+  layers.BatchNormalization(),
+
+  layers.Flatten(),
+  layers.Dense(512, activation='relu'),
+  layers.Dropout(0.5),
+  layers.Dense(256, activation='relu'),
+  layers.Dropout(0.3),
+  layers.Dense(6, activation='softmax')
+])
 
 ```
+
+Визуализация данных:
+<img width="1489" height="274" alt="image" src="https://github.com/user-attachments/assets/93f751b2-ac74-4649-bc3f-fc5ddde58d5b" />
+Результаты обучения:
+<img width="1189" height="390" alt="image" src="https://github.com/user-attachments/assets/96ef4b31-5aff-4a11-9a14-891f5aeb6ab0" />
