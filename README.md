@@ -59,7 +59,6 @@
 yolo = YOLO("yolov8n.pt").to(dev)
 trk = sv.ByteTrack()
 det = trk.update_with_detections(det)
-
 ```
 
 ### Сверточная сеть для нахождения координат объекта (`sun_cnn.py`)
@@ -80,8 +79,10 @@ model = nn.Sequential(
   nn.ReLU(),
   nn.Linear(128, 2)
 )
-
 ```
+
+**Визуализация данных:**
+<img width="1182" height="295" alt="image" src="https://github.com/user-attachments/assets/1d9acd8a-c13c-47f8-974d-9b40e5441351" />
 
 ### Сверточная сеть для распознавания сторон кости (`dice_cnn.py`)
 
@@ -114,7 +115,7 @@ model = keras.Sequential([
 
 ```
 
-Визуализация данных:
+**Визуализация данных:**
 <img width="1489" height="274" alt="image" src="https://github.com/user-attachments/assets/93f751b2-ac74-4649-bc3f-fc5ddde58d5b" />
-Результаты обучения:
+**Результаты обучения:**
 <img width="1189" height="390" alt="image" src="https://github.com/user-attachments/assets/96ef4b31-5aff-4a11-9a14-891f5aeb6ab0" />
